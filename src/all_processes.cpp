@@ -1,7 +1,10 @@
 #include "all_processes.h"
+
 #include <unistd.h>
+
 #include <algorithm>
 #include <vector>
+
 #include "linux_parser.h"
 #include "process.h"
 
@@ -65,4 +68,3 @@ void All_Processes::RemoveFinishedProcesses(bool& changed) {
     }
   }
 }
-

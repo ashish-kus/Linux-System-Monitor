@@ -1,10 +1,10 @@
 #ifndef ALL_PROCESSES_H
 #define ALL_PROCESSES_H
 
-#include "process.h"
-
 #include <string>
 #include <vector>
+
+#include "process.h"
 
 using std::string;
 using std::vector;

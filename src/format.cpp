@@ -1,4 +1,5 @@
 #include "format.h"
+
 #include <iomanip>
 #include <sstream>
 #include <string>

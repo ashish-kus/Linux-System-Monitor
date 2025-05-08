@@ -1,4 +1,7 @@
+#include "process.h"
+
 #include <unistd.h>
+
 #include <cctype>
 #include <iostream>
 #include <iterator>
@@ -10,7 +13,6 @@
 #include "linux_parser.h"
 #include "parser_consts.h"
 #include "parser_helper.h"
-#include "process.h"
 
 using namespace std;
 
@@ -24,10 +26,8 @@ Process::Process(int pid, long Hertz) : pid_(pid), Hertz_(Hertz) {
   starttime_ = stof(cpuNumbers[21]);
 }
 
-
 // Return this process's ID
 int Process::Pid() { return pid_; }
-
 
 // Return this process's CPU utilization
 double Process::CpuUtilization() {
@@ -40,16 +40,15 @@ double Process::CpuUtilization() {
   return cpu_usage;
 }
 
-
 // Return the command that generated this process
 string Process::Command() {
   string cmd = ParserHelper::GetValue<string>(to_string(pid_) +
                                               ParserConsts::kCmdlineFilename);
   size_t maxSize = 50;
-  if(cmd.size() > maxSize) {
+  if (cmd.size() > maxSize) {
     cmd.resize(maxSize - 3);
     cmd = cmd + "...";
-  }                                            
+  }
   return cmd;
 }
 
@@ -60,13 +59,11 @@ float Process::RawRam() {
   return memInKB;
 }
 
-
 // Return this process's memory utilization
 string Process::Ram() {
   float memInKB = RawRam();
   return Format::KBisMB(memInKB);
 }
-
 
 // Return the user (name) that generated this process
 string Process::User() {
@@ -76,7 +73,6 @@ string Process::User() {
   string user = LinuxParser::UserByUID(UID);
   return user;
 }
-
 
 // Return the age of this process (in seconds)
 long int Process::UpTime() {

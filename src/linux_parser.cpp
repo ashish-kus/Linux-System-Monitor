@@ -1,9 +1,11 @@
+#include "linux_parser.h"
+
 #include <dirent.h>
+
 #include <sstream>
 #include <string>
 #include <vector>
 
-#include "linux_parser.h"
 #include "parser_consts.h"
 #include "parser_helper.h"
 
@@ -69,7 +71,6 @@ vector<int> LinuxParser::Pids() {
   return pids;
 }
 
-
 // Read and return the system memory utilization
 float LinuxParser::MemoryUtilization() {
   float memTotal = ParserHelper::GetValueByKey<int>(
@@ -82,7 +83,6 @@ float LinuxParser::MemoryUtilization() {
   return memory;
 }
 
-
 // Read and return the system uptime
 long LinuxParser::UpTime() {
   string line;
@@ -90,20 +90,17 @@ long LinuxParser::UpTime() {
   return upTime;
 }
 
-
 // Read and return the total number of processes
 int LinuxParser::TotalProcesses() {
   return ParserHelper::GetValueByKey<int>(ParserConsts::filterProcesses,
                                           ParserConsts::kStatFilename);
 }
 
-
 // Read and return the number of running processes
 int LinuxParser::RunningProcesses() {
   return ParserHelper::GetValueByKey<int>(ParserConsts::filterRunningProcesses,
                                           ParserConsts::kStatFilename);
 }
-
 
 // Read and return the user associated with a process
 string LinuxParser::UserByUID(int UID) {

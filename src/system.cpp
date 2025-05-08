@@ -1,12 +1,13 @@
+#include "system.h"
+
 #include <string>
 #include <vector>
 
+#include "all_processes.h"
+#include "format.h"
 #include "linux_parser.h"
 #include "process.h"
 #include "processor.h"
-#include "all_processes.h"
-#include "system.h"
-#include "format.h"
 
 using std::string;
 using std::vector;
@@ -14,7 +15,7 @@ using std::vector;
 // Return the system's CPU
 Processor& System::Cpu() { return cpu_; }
 
-//Return a container composed of the system's processes
+// Return a container composed of the system's processes
 All_Processes& System::Processes() { return processes_; }
 
 // Return the system's kernel identifier (string)
@@ -32,5 +33,5 @@ int System::RunningProcesses() { return LinuxParser::RunningProcesses(); }
 // Return the total number of processes on the system
 int System::TotalProcesses() { return LinuxParser::TotalProcesses(); }
 
-//Return the number of seconds since the system started running
+// Return the number of seconds since the system started running
 long int System::UpTime() { return LinuxParser::UpTime(); }
